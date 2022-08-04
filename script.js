@@ -50,9 +50,9 @@ border.style.margin = '0 auto';
 border.style.padding = '16px';
 border.style.maxWidth = '50%';
 
-const user = new User("Anton", "12.07.1977", navigator.userAgent, "Capture.png", ["programming", "football", "chess"]);
+const user = new User("Anton", "12.07.1977", navigator.userAgent, "Capture.PNG", ["programming", "football", "chess"]);
 border.append(user.Info);
 
-const user2 = new User("Dima", "12.07", navigator.userAgent, "Capture.png", ["programming", "football", "chess"]);
+const user2 = new User("Dima", "12.07", navigator.userAgent, "Capture.PNG", ["programming", "football", "chess"]);
 border.append(user2.Info);
 
