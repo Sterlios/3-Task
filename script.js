@@ -10,6 +10,7 @@ class User {
 	let ul = document.createElement('ul');
 	ul.append(this.GetField(this.Name));
 	ul.append(this.GetField(this.BirtDay));
+	ul.append(this.GetField(this.UserAgent));
 	ul.append(this.GetArray(this.Skills));
 	return ul;
   }
