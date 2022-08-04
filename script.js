@@ -1,13 +1,15 @@
 class User {
-  constructor(name, birthDay, userAgent, skills) {
+  constructor(name, birthDay, userAgent, capture, skills) {
     this.Name = name;
     this.BirtDay = birthDay;
 	this.Skills = skills;
 	this.UserAgent = userAgent;
+	this.Capture = capture;
   }
   
   get Info(){ 
 	let ul = document.createElement('ul');
+	ul.append(this.GetImage(this.Capture));
 	ul.append(this.GetField(this.Name));
 	ul.append(this.GetField(this.BirtDay));
 	ul.append(this.GetField(this.UserAgent));
@@ -19,6 +21,12 @@ class User {
 	let li = document.createElement('li');
 	li.innerHTML = field;
 	return li;
+  }
+  
+  GetImage(capture){
+	const photo = new Image(200, 200);
+	photo.src = capture;
+	return photo;
   }
   
   GetArray(array){
@@ -34,7 +42,7 @@ class User {
   }
 }
 
-const user = new User("Anton", "12.07.1977", navigator.userAgent, ["programming", "football", "chess"]);
+const user = new User("Anton", "12.07.1977", navigator.userAgent, "Capture.png", ["programming", "football", "chess"]);
 
 let border = document.createElement('div'); 
 
