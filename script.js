@@ -14,6 +14,7 @@ class User {
 	ul.append(this.GetField(this.BirtDay));
 	ul.append(this.GetField(this.UserAgent));
 	ul.append(this.GetArray(this.Skills));
+	
 	return ul;
   }
   
@@ -42,17 +43,46 @@ class User {
   }
 }
 
-let border = document.createElement('div'); 
-document.body.append(border);
+let personInfo = document.createElement('div'); 
+document.body.append(personInfo);
 
-border.style.border = '6px solid green';
-border.style.margin = '0 auto';
-border.style.padding = '16px';
-border.style.maxWidth = '50%';
+personInfo.style.border = '6px solid green';
+personInfo.style.margin = 'auto';
+personInfo.style.padding = '15px';
+personInfo.style.maxWidth = '50%';
 
 const user = new User("Anton", "12.07.1977", navigator.userAgent, "Capture.PNG", ["programming", "football", "chess"]);
-border.append(user.Info);
+personInfo.append(user.Info);
 
-const user2 = new User("Dima", "12.07", navigator.userAgent, "Capture.PNG", ["programming", "football", "chess"]);
-border.append(user2.Info);
+let withoutPaddingSize = document.createElement('div');
+withoutPaddingSize.append("Размер без паддинга: " + getComputedStyle(personInfo).width + " x " + getComputedStyle(personInfo).height);
+personInfo.append(withoutPaddingSize);
 
+let withPaddingSize = document.createElement('div');
+let padding = Number(getComputedStyle(personInfo).padding.substr(0,getComputedStyle(personInfo).padding.length - 2))
+let fullWidth = Number(getComputedStyle(personInfo).width.substr(0,getComputedStyle(personInfo).width.length - 2)) + padding + "px";
+let fullHeight = Number(getComputedStyle(personInfo).height.substr(0,getComputedStyle(personInfo).height.length - 2)) + padding + "px";
+withPaddingSize.append("Размер c паддингом: " + fullWidth + " x " + fullHeight);
+personInfo.append(withPaddingSize);
+let cursorPositionElement = document.createElement('div');
+personInfo.append(cursorPositionElement);
+
+function getPosition(event){
+	let x = 0;
+	let y = 0;
+ 
+	if (!event){
+		let event = window.event;
+	}
+ 
+	x = event.pageX;
+	y = event.pageY;
+	
+	return {x: x, y: y}
+}
+
+addEventListener('mousemove', (event) => {
+	let cursorPosition = getPosition(event);
+	cursorPositionElement.innerHTML = "Позиция: " + cursorPosition.x + "." + cursorPosition.y;
+	personInfo.append(cursorPositionElement);
+});
