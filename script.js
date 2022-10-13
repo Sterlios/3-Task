@@ -59,11 +59,9 @@ withoutPaddingSize.append("Размер без паддинга: " + getComputed
 personInfo.append(withoutPaddingSize);
 
 let withPaddingSize = document.createElement('div');
-let padding = Number(getComputedStyle(personInfo).padding.substr(0,getComputedStyle(personInfo).padding.length - 2))
-let fullWidth = Number(getComputedStyle(personInfo).width.substr(0,getComputedStyle(personInfo).width.length - 2)) + padding + "px";
-let fullHeight = Number(getComputedStyle(personInfo).height.substr(0,getComputedStyle(personInfo).height.length - 2)) + padding + "px";
-withPaddingSize.append("Размер c паддингом: " + fullWidth + " x " + fullHeight);
+withPaddingSize.append("Размер c паддингом: " + personInfo.clientWidth + " x " + personInfo.clientHeight);
 personInfo.append(withPaddingSize);
+
 let cursorPositionElement = document.createElement('div');
 personInfo.append(cursorPositionElement);
 
